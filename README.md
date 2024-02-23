@@ -3,7 +3,7 @@
 # A simulator for chess
 
 This hand-made simulator allows you to play chess against stockfish.
-Stockfish is directly linked to pipes to allow answers as fast as they can be. However, a little delay is simulated to make the computer move less "agressive".
+Stockfish is directly linked using pipes to allow answers as fast as they can be. However, a little delay is simulated to make the computer's turn less "agressive".
 
 Sound effects are identical to those in chess.com
 You can adjust the time in the variable GAME_TIME at chess.cpp
