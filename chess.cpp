@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <iostream>
+#include <filesystem>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
@@ -16,15 +17,25 @@
 #define GAME_TIME 1200
 
 using namespace std;
+namespace fs = std::filesystem;
 
 int main(int argc, char* argv[]){
 
+    string filename = "stockfish";
+    fs::path filePath = fs::current_path() / filename;
+
+    if (!fs::exists(filePath)) {
+    	cout << "ERROR: file 'stockfish' not found at project directory." << endl;
+    	cout << "Please download file at: https://stockfishchess.org/download/linux/" << endl;
+    	exit(1);
+    }
+    
     int fd1[2], fd2[2];
     pid_t pid;
     char command[256];
     string token;
 
-    sprintf(command, "%s", "stockfish");
+    sprintf(command, "%s", filename.c_str());
 
     pipe(fd1);
     pipe(fd2);
